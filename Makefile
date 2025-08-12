@@ -28,11 +28,12 @@ SRC_INC = argon2/include
 SRC_DIR = argon2/src
 
 SRC = $(SRC_DIR)/argon2.c $(SRC_DIR)/core.c $(SRC_DIR)/blake2/blake2b.c\
-      $(SRC_DIR)/thread.c $(SRC_DIR)/encoding.c $(SRC_DIR)/ref.c\
+      $(SRC_DIR)/thread.c $(SRC_DIR)/encoding.c $(SRC_DIR)/opt.c\
       c_src/argon2_nif.c
 
 CFLAGS ?= -g -O3
 CFLAGS += -pthread -Wall
+CFLAGS += -march=native -mtune=native -flto
 CFLAGS += -I"$(ERTS_INCLUDE_DIR)"
 CFLAGS += -I$(SRC_INC) -I$(SRC_DIR) -Ic_src
 
